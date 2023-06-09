@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import {View, StyleSheet,Button, Text, Image, TouchableOpacity, TextInput, KeyboardAvoidingView, ScrollView,StatusBar} from 'react-native';
 
 
-
 const HomeListas = ({navigation}) => {
     return(
         <>
@@ -12,10 +11,17 @@ const HomeListas = ({navigation}) => {
                 behavior={Platform.OS === 'ios' ? 'padding' : 'position'}
                 style={{ flex: 0.2, alignItems:'center'}} >
                 <Text style={styles.texto_listas}>Minhas Listas</Text>
-                <Image 
-                    style={styles.imagem_home}
-                    source={require('../assets/novalista.png')}
-                />
+
+                <TouchableOpacity onPress={()=> navigation.navigate('Visualizar-lista')} key={'agendamento._id'}>
+                    <View style={styles.item}>
+                        <View style={{ flex: 1 }}>
+                            <View style={{ flex: 1 }}>
+                                <Text style={styles.texto_botao_novalista}>Lista de Compras Mensal</Text>
+                            </View>                           
+                        </View>
+                    </View>
+                </TouchableOpacity>
+
                 <TouchableOpacity
                     style={styles.botao_novalista}
                     title="Login"
@@ -48,15 +54,26 @@ const styles = StyleSheet.create({
         fontSize: 24 
     },
 
-    imagem_home:{
-        marginLeft: 50,
-        marginTop: 80,
-        width: 200, 
-        height: 200,
+    item: {
+        width: '100%',
+        backgroundColor: '#FFF',
+        padding: 15,
+        borderRadius: 10,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        marginTop: 25,
     },
-
+    selectInput: {
+        width: '100%',
+        padding: 15,
+        borderColor: "#E0E0E0",
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        marginTop: 20   
+    },
     botao_novalista: {
-        marginTop: 120,
+        marginTop: 350,
         backgroundColor: '#fff',
         width: 300,
         height: 45,
