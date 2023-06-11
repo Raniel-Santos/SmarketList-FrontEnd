@@ -5,9 +5,11 @@ import Login from '../pages/Login';
 import Cadastrar from '../pages/Cadastrar';
 import HomeListas from '../pages/HomeListas';
 import CriarLista from '../pages/CriarLista';
-import CriarCategoria from '../pages/CriarCategoria';
+import CriarProduto from '../pages/CriarProduto';
 import AdicionarProdutos from '../pages/AdicionarProdutos';
 import VisualizarLista from '../pages/VisualizarLista';
+import ListagemProdutos from '../pages/ListagemProdutos';
+import Produto from '../pages/Produto';
 
 
 export default function Routes(){
@@ -21,8 +23,11 @@ export default function Routes(){
                     <Stack.Screen name = "Home-listas" component={HomeListas}/>
                     <Stack.Screen name = "Criar-lista" component={CriarLista}/>
                     <Stack.Screen name = "Visualizar-lista" component={VisualizarLista}/>
-                    <Stack.Screen name = "Criar-categoria" component={CriarCategoria}/>
+                    <Stack.Screen name = "Criar-produto" component={CriarProduto}/>
                     <Stack.Screen name = "Adicionar-produto" component={AdicionarProdutos}/>
+                    <Stack.Screen name = "Listagem-produto" component={ListagemProdutos}/>
+                    <Stack.Screen name = "Produto" component={Produto}/>
+
                 </Stack.Navigator>
             </NavigationContainer> 
     )

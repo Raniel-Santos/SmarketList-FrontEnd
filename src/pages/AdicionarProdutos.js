@@ -9,21 +9,16 @@ const AdicionarProdutos = ({navigation}) => {
             <KeyboardAvoidingView 
                     behavior={Platform.OS === 'ios' ? 'padding' : 'position'}
                     style={{ flex: 0.2, alignItems:'center'}} >
-                    <Text style={styles.texto_listas}>Adicionar Produtos</Text>
+                    <Text style={styles.texto_listas}>Produtos</Text>
                     <Image 
                         style={styles.imagem_home}
                         source={require('../assets/carrinho-de-compras.png')}
                     />
-                    <TouchableOpacity
-                        style={styles.botao_selecionar_produto}
-                        title="Login"
-                        onPress={() => navigation.navigate('Home-produtos')}>
-                        <Text style={styles.texto_botao_selecionar_produto}>Selecionar Produtos</Text>
-                    </TouchableOpacity>
+                   
                     <TouchableOpacity
                         style={styles.botao_add_produtos}
                         title="Login"
-                        onPress={() => navigation.navigate('Criar-categoria')}>
+                        onPress={() => navigation.navigate('Criar-produto')}>
                     <Text style={styles.texto_botao_novo_produto}>Cadastrar Novo</Text>
                 </TouchableOpacity>              
 
@@ -62,7 +57,7 @@ const styles = StyleSheet.create({
         borderRadius: 20,    
     },
     botao_add_produtos: {
-        marginTop: 20,
+        marginTop: 200,
         backgroundColor: '#31A8DB',
         width: 300,
         height: 45,

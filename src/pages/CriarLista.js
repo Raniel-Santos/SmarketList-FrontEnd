@@ -1,8 +1,34 @@
 import React from 'react';
 import { View, Button, Text, Image, TouchableOpacity, TextInput, KeyboardAvoidingView, ScrollView, StatusBar  } from 'react-native';
 import { StyleSheet } from 'react-native';
+import {useState, useEffect} from 'react';
+import { getStorageItem } from '../functions/encryptedStorageFunctions';
+import Toast from 'react-native-toast-message';
+import axios from 'axios';
 
-const CriarLista = ({ navigation }) => (
+const CriarLista = ({ navigation }) =>{ 
+    const [lista, setLista] = useState('')
+
+    const cadastroLista = async () =>{
+        const obj ={
+          nome:lista,
+
+      }
+      const token = await getStorageItem('token');
+      
+      axios.post('http://10.0.2.2:5000/lista/cadastrar', obj, { headers: { Authorization: token } }).then(res => {
+        console.log('AQUIIII');
+        Toast.show({
+        type: 'success',
+        text1: 'Lista Criada com Sucesso !',          
+    })
+      navigation.navigate('Home-listas')
+    }).catch(error => {
+        console.log(error.response)
+    })
+}
+
+    return (
 <ScrollView style={{ flex:1, backgroundColor: '#31DB9E'}}>
 <StatusBar backgroundColor= '#31DB9E' barStyle={'dark-content'}/>
     <KeyboardAvoidingView 
@@ -17,18 +43,19 @@ const CriarLista = ({ navigation }) => (
                     autoCapitalize="none"
                     autoCompleteType="none"
                     autoCorrect={false}
-                    onChangeText={() => {}}
+                    onChangeText={(e) => setLista(e)}
+                    value={lista}
             />
             <TouchableOpacity 
                 style={styles.botao_criar}
                 title="criar"
-                onPress={() => navigation.navigate('Home-listas') }>
+                onPress={cadastroLista}>
             <Text style={styles.texto_botao_criar}>Criar</Text>
             </TouchableOpacity>
     </KeyboardAvoidingView>
 </ScrollView>    
-);
-
+)};
+    
 CriarLista.navigationOptions = {
     title: 'Home',
 }
